@@ -1,0 +1,76 @@
+.instructions {
+    font-size: 1em;
+    font-family: helvetica;
+    padding-right:10px;
+}
+
+.remove {
+    color: red;
+}
+
+.row {
+    margin: 10px;
+}
+
+.container-fluid {
+    margin: 10px;
+}
+
+.warTOR {
+    text-align: center;
+    margin: auto;
+    padding-top: 200px;
+    font-size: 4em;
+    font-style: oblique;
+    font-variant: small-caps;
+    font-weight: 800;
+    color: rgb(160,160,255);
+}
+
+.bgimage {
+    display: block;
+    width: auto;
+    height: auto;
+    margin: auto;
+    padding-bottom: 200px;
+}
+
+.titles {
+    text-align: justify;
+    font-stretch: extra-expanded;
+    margin-left: 15px;
+    font-size: 5em;
+    font-weight: 600;
+}
+
+.Upload {
+    background-color: rgb(160,160,255);
+    color: white;
+}
+
+.button {
+    margin-left: 15px;
+}
+
+.percent {
+    color: rgb(200,200,255);
+    margin-left: 15px;
+    padding-bottom: 50px;
+}
+
+.bar{
+    width: 0px;
+    height: 20px;
+    border-radius: 4px;
+    background-color: rgb(200,200,255);
+    color: rgb(160,160,255);
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 5px !important;
+}
+
+.capacity{
+    text-align: justify;
+    margin-left: 15px;
+}
+
