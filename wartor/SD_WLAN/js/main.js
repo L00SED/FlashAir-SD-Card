@@ -250,5 +250,62 @@ $(function() {
 	wlansd.sort(cmptime);
 	showFileList(location.pathname);
 	setInterval(polling, 500);
-	};
+	}
 });
+
+data = [];
+chatstream = {};
+
+function restoreChatStream(){
+    $.getJSON("/upload.cgi?UPDIR=SD_WLAN/data/chatstream.json", data, function(data){
+        console.log("JSON loaded: " + data)
+        chastream = {data};
+        for(i = 1; i < chatstream.length; i++){
+            var newChatItem = document.createElement("li");
+            var newChatText = document.createTextNode(chatstream[i].toString());
+            newChatItem.appendChild(newChatText);
+            document.getElementById('messages').appendChild(newChatItem);
+        }
+    })
+    $.get("/upload.cgi?DEL=SD_WLAN/data/chatstream.json", function(data){
+        console.log("JSON deleted: " + data);
+        $.ajax({url:"/upload.cgi?",
+           type: "POST",
+           data: data,
+           processDat: false,
+           contentType: 'application/json'
+       });
+    })
+}
+
+function sendMessage(form){
+    if(form[0].value.toString() !== ""){
+        chatstream[chatstream.length] = form[0].value.toString();
+        console.log(chatstream);
+        var newListItem = document.createElement("li");
+        var newListText = document.createTextNode(form[0].value.toString());
+        newListItem.appendChild(newListText);
+    	document.getElementById('messages').appendChild(newListItem);
+        var formValue = document.getElementById("form-input").value = "";
+        
+        $.getJSON("/upload.cgi?UPDIR=SD_WLAN/data/chatstream.json", data, function(returnedData){
+            console.log("data loaded to JSON: " + returnedData);
+            $.ajax({url:"/upload.cgi?",
+                   type: "POST",
+                   data: chatstream,
+                   processDat: false,
+                   contentType: 'application/json'
+                   });
+            index = chatstream.length;
+            JSON = {index: chatstream};
+            console.log(JSON);
+        });  
+    }    
+    else {
+    alert("Empty message.");
+    }
+}
+
+restoreChatStream();
+
+
